@@ -9,6 +9,7 @@ import DAO.ColumnaDao;
 import Dato.ColumnaJc;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.net.URISyntaxException;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -26,7 +27,7 @@ public class ColumnaController extends HttpServlet {
     private static String LIST_USER = "/ColumnaLista.jsp";
     private ColumnaDao dao;
 
-    public ColumnaController() {
+    public ColumnaController() throws URISyntaxException {
         super();
         dao = new ColumnaDao();
     }

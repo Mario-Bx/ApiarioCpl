@@ -11,6 +11,7 @@ import Dato.Squema;
 import Dato.TablaJc;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.net.URISyntaxException;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -28,7 +29,7 @@ public class TablaController extends HttpServlet {
     private static String LIST_USER = "/TablaLista.jsp";
     private TablaDao dao;
 
-    public TablaController() {
+    public TablaController() throws URISyntaxException {
         super();
         dao = new TablaDao();
     }

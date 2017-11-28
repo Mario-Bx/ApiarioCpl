@@ -9,6 +9,7 @@ import DAO.SquemaDao;
 import Dato.Squema;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.net.URISyntaxException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -29,7 +30,7 @@ public class SquemaController extends HttpServlet {
     private static String LIST_USER = "/SquemaLista.jsp";
     private SquemaDao dao;
 
-    public SquemaController() {
+    public SquemaController() throws URISyntaxException {
         super();
         dao = new SquemaDao();
     }
