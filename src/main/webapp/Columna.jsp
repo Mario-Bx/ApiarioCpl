@@ -91,7 +91,7 @@
                     } else if ((request.getParameter("action").equals("edit"))) {
                         ColumnaJc Squemas = (ColumnaJc) request.getAttribute("ColumnaJsp");
                     %>
-                    <form method="POST" action='ClienteClontroller' name="frmAddSquema">
+                    <form method="POST" action='ColumnaController' name="frmAddSquema">
                         Columna ID : <input type="text" readonly="readonly" name="TablaIdHtml" value="<%=Squemas.getId_Colnmna()%>"/>
                         <br /> 
                         Nombre Columna : <input type="text" name="NombreHtml" value="<%=Squemas.getNombre()%>"/>
