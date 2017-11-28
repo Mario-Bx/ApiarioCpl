@@ -54,11 +54,9 @@ public class ColumnaController extends HttpServlet {
         } else if (action.equalsIgnoreCase("ListarColumnasJspAC")) {
             forward = LIST_USER;
             request.setAttribute("ColumnaListaJsp", dao.getAllColumnaJcs());
-        } else if (action.equalsIgnoreCase("incertarAc")) {
-            forward = INSERT_OR_EDIT;
-            request.setAttribute("TablaListaJsp", dao.getAllTablas());
         } else {
             forward = INSERT_OR_EDIT;
+            request.setAttribute("TablaListaJsp", dao.getAllTablas());
         }
 
         RequestDispatcher view = request.getRequestDispatcher(forward);
