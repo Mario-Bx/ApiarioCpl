@@ -16,9 +16,7 @@ public class TablaJc {
     private int id_Tabla;
     private String Nombre;
     private int idFK_Squema;
-    ArrayList<ForingKey> listaForingKey = new ArrayList<ForingKey>();
-    ArrayList<ColumnaJc> listaColumnas = new ArrayList<ColumnaJc>();
-    ArrayList<Key> listaKey = new ArrayList<Key>();
+
 
     public TablaJc() {
     }
@@ -51,38 +49,6 @@ public class TablaJc {
 
     public void setNombre(String Nombre) {
         this.Nombre = Nombre;
-    }
-
-    public ArrayList<ForingKey> getListaForingKey() {
-        return listaForingKey;
-    }
-
-    public void setListaForingKey(ArrayList<ForingKey> listaForingKey) {
-        this.listaForingKey = listaForingKey;
-    }
-
-    public ArrayList<ColumnaJc> getListaColumnas() {
-        return listaColumnas;
-    }
-
-    public void setListaColumnas(ArrayList<ColumnaJc> listaColumnas) {
-        this.listaColumnas = listaColumnas;
-    }
-
-    public ArrayList<Key> getListaKey() {
-        return listaKey;
-    }
-
-    public void setListaKey(ArrayList<Key> listaKey) {
-        this.listaKey = listaKey;
-    }
-
-    @Override
-    public String toString() {
-        return "Tabla{" + "id_Tabla=" + id_Tabla + ", Nombre=" + Nombre + ", Squema=" + idFK_Squema
-                + "\n         listaColumnas=" + listaColumnas
-                + "\n         listaKey=" + listaKey
-                + "\n         listaForingKey=" + listaForingKey + "}\n\n";
     }
 
 }

@@ -6,9 +6,8 @@
 package DAO;
 
 
-import Dato.TablaJc;
+import Dato.KilosMielJC;
 import Servicios.Conexion;
-import Servicios.DbUtil;
 import java.net.URISyntaxException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -22,23 +21,23 @@ import java.util.List;
  *
  * @author Mario-Bx
  */
-public class TablaDao {
+public class KilosDao {
 
     private Connection connection;
 
     
-    public TablaDao() throws URISyntaxException {
+
+    public KilosDao() throws URISyntaxException {
         connection = Conexion.getConnection();
     }
 
-    public void addTabla(TablaJc tablaAdd) {
+    public void addTabla(KilosMielJC tablaAdd) {
         try {
             System.out.println("Entro a Agregar");
             PreparedStatement preparedStatement = connection
                     .prepareStatement("insert into TablasBD(Nombre, ID_FKSquema) values (?,?)");
             // Parameters start with 1
             preparedStatement.setString(1, tablaAdd.getNombre());
-            preparedStatement.setInt(2, tablaAdd.getIdFK_Squema());
             preparedStatement.executeUpdate();
 
         } catch (SQLException e) {
@@ -60,15 +59,13 @@ public class TablaDao {
         }
     }
 
-    public void updateTabla(TablaJc tablaUP, int cs) {
+    public void updateTabla(KilosMielJC tablaUP, int cs) {
         try {
             System.out.println("Entro a Acturalizar");
             PreparedStatement preparedStatement = connection
                     .prepareStatement("update TablasBD set Nombre=?, ID_FKSquema=? where ID_Tabla=" + cs);
             // Parameters start with 1
             preparedStatement.setString(1, tablaUP.getNombre());
-            preparedStatement.setInt(2, tablaUP.getIdFK_Squema());
-            preparedStatement.setInt(3, tablaUP.getId_Tabla());
             preparedStatement.executeUpdate();
             System.out.println("Actualizo La Tabla");
         } catch (SQLException e) {
@@ -76,18 +73,20 @@ public class TablaDao {
         }
     }
 
-    public List<TablaJc> getAllTablas() {
-        List<TablaJc> tablaLista = new ArrayList<TablaJc>();
+    public List<KilosMielJC> getAllTablas() {
+        List<KilosMielJC> tablaLista = new ArrayList<KilosMielJC>();
         try {
             System.out.println("Emplezando a Listar");
             Statement statement = connection.createStatement();
 
-            ResultSet rs = statement.executeQuery("select * from TablasBD");
+            ResultSet rs = statement.executeQuery("SELECT ID_Produccion, Fecha, Nombre, ID_FkColmena, sum(Kilos_Miel) FROM prodcionmbd WHERE prodcionmbd.ID_Produccion != 1234 and Kilos_Miel>2 GROUP BY prodcionmbd.ID_FkColmena");
             while (rs.next()) {
-                TablaJc tablaLI = new TablaJc();
-                tablaLI.setId_Tabla(rs.getInt("ID_Tabla"));
+                KilosMielJC tablaLI = new KilosMielJC();
+                tablaLI.setID_Produccion(rs.getInt("ID_Produccion"));
+                tablaLI.setFecha(rs.getString("Fecha"));
                 tablaLI.setNombre(rs.getString("Nombre"));
-                tablaLI.setIdFK_Squema(rs.getInt("ID_FKSquema"));
+                tablaLI.setID_FkColmena(rs.getInt("ID_FkColmena"));
+                tablaLI.setKilos_Miel(rs.getInt("Kilos_Miel"));
                 tablaLista.add(tablaLI);
             }
             System.out.println("Se Termino de  Listar");
@@ -98,8 +97,8 @@ public class TablaDao {
         return tablaLista;
     }
 
-    public TablaJc getTablaById(int tablaId) {
-        TablaJc tabla = new TablaJc();
+    public KilosMielJC getTablaById(int tablaId) {
+        KilosMielJC tabla = new KilosMielJC();
         try {
             PreparedStatement preparedStatement = connection.
                     prepareStatement("select * from TablasBD where ID_Tabla=?");
@@ -107,9 +106,9 @@ public class TablaDao {
             ResultSet rs = preparedStatement.executeQuery();
 
             if (rs.next()) {
-                tabla.setId_Tabla(rs.getInt("ID_Tabla"));
+                tabla.setID_Produccion(rs.getInt("ID_Produccion"));
                 tabla.setNombre(rs.getString("Nombre"));
-                tabla.setIdFK_Squema(rs.getInt("ID_FKSquema"));
+                tabla.setID_FkColmena(rs.getInt("ID_FkColmena"));
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -117,6 +116,5 @@ public class TablaDao {
 
         return tabla;
     }
-
 
 }

@@ -1,2 +1,2 @@
-Link Github: https://github.com/Mario-Bx/SquemasHeroku
-Link Heroku: http://squemasherokubd.herokuapp.com/myApp/
+Link Github: https://github.com/Mario-Bx/ParcialApiario
+Link Heroku: https://parcialapiariohk.herokuapp.com/myApp/
