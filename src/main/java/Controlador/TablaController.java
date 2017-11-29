@@ -5,10 +5,8 @@
  */
 package Controlador;
 
-import DAO.SquemaDao;
-import DAO.TablaDao;
-import Dato.Squema;
-import Dato.TablaJc;
+
+import DAO.KilosDao;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.net.URISyntaxException;
@@ -27,11 +25,11 @@ public class TablaController extends HttpServlet {
     private static final long serialVersionUID = 1L;
     private static String INSERT_OR_EDIT = "/Tabla.jsp";
     private static String LIST_USER = "/TablaLista.jsp";
-    private TablaDao dao;
+    private KilosDao dao;
 
     public TablaController() throws URISyntaxException {
         super();
-        dao = new TablaDao();
+        dao = new KilosDao();
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -48,17 +46,15 @@ public class TablaController extends HttpServlet {
             System.out.println(" Realizo la accion de eliminar");
         } else if (action.equalsIgnoreCase("edit")) {
             forward = INSERT_OR_EDIT;
-            request.setAttribute("squemas", dao.getAllSquemas());
             int tablaID = Integer.parseInt(request.getParameter("TablaJspAc"));
-            TablaJc tabla = dao.getTablaById(tablaID);
+//            TablaJc tabla = dao.getTablaById(tablaID);
             ///primero va la tabla de sql
-            request.setAttribute("TablaJsp", tabla);
+//            request.setAttribute("TablaJsp", tabla);
         } else if (action.equalsIgnoreCase("ListarTablasJspAC")) {
             forward = LIST_USER;
             request.setAttribute("TablaListaJsp", dao.getAllTablas());
         } else {
             forward = INSERT_OR_EDIT;
-            request.setAttribute("squemas", dao.getAllSquemas());
         }
 
         RequestDispatcher view = request.getRequestDispatcher(forward);
@@ -66,18 +62,18 @@ public class TablaController extends HttpServlet {
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        TablaJc newTabla = new TablaJc();
-        newTabla.setNombre(request.getParameter("NombreHtml"));
-        newTabla.setIdFK_Squema(Integer.parseInt(request.getParameter("SquemaIdHtml")));
+//        TablaJc newTabla = new TablaJc();
+//        newTabla.setNombre(request.getParameter("NombreHtml"));
+//        newTabla.setIdFK_Squema(Integer.parseInt(request.getParameter("SquemaIdHtml")));
 
         String tablaid = request.getParameter("TablaIdHtml");
 
         if (tablaid == null || tablaid.isEmpty()) {
-            dao.addTabla(newTabla);
+//            dao.addTabla(newTabla);
         } else {
-            newTabla.setId_Tabla(Integer.parseInt(tablaid));
+//            newTabla.setId_Tabla(Integer.parseInt(tablaid));
             int tablaId = Integer.parseInt(request.getParameter("TablaIdHtml"));
-            dao.updateTabla(newTabla, tablaId);
+//            dao.updateTabla(newTabla, tablaId);
         }
         RequestDispatcher view = request.getRequestDispatcher(LIST_USER);
         request.setAttribute("TablaListaJsp", dao.getAllTablas());
