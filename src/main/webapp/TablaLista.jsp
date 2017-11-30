@@ -55,7 +55,7 @@
                                     for (KilosMielJC cliente : newCliente) {
                             %>
                             <tr>
-                                <td><%=cliente.getId_Tabla()%></td>
+                                <td><%=cliente.getI%></td>
                                 <td><%=cliente.getNombre()%></td>
                                 <td><%=cliente.getIdFK_Squema()%></td>
                                 <td><a href="TablaController?action=edit&TablaJspAc=<%=cliente.getId_Tabla()%>">Aatualizar</a></td>
