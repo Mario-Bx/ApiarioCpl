@@ -80,7 +80,7 @@ public class KilosDao {
             System.out.println("Emplezando a Listar");
             Statement statement = connection.createStatement();
 
-//            ResultSet rs = statement.executeQuery("SELECT ID_FkColmena, sum(Kilos_Miel) FROM prodcionmbd WHERE ID_Produccion != 1234 and Kilos_Miel>2 GROUP BY ID_FkColmena");
+//            ResultSet rs = statement.executeQuery("SELECT ID_FkColmena, sum(Kilos_Miel) FROM prodcionmbd WHERE ID_Produccion != 1234 and Kilos_Miel>2 GROUP BY ID_FkColmena limit 10");
             ResultSet rs = statement.executeQuery("SELECT * FROM prodcionmbd WHERE ID_Produccion != 1234 and Kilos_Miel>2");
             while (rs.next()) {
                 KilosMielJC tablaLI = new KilosMielJC();
