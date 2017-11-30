@@ -38,7 +38,7 @@
 
                 <div class="form-style-5">
                     <a href="TablaController?action=incertarAc"><input type="submit" value="Add Tabla"/></a>
-
+                    Reporte de Miel
                     <table border=1>
                         <thead>
                             <tr>
@@ -65,12 +65,10 @@
                                 <td><a href="TablaController?action=edit&TablaJspAc=<%=cliente.getID_Colmena()%>">Aatualizar</a></td>
                                 <td><a href="TablaController?action=delete&TablaJspAc=<%=cliente.getID_Colmena()%>">Eliminar</a></td>
                             </tr>
-
                             <%
                                     }
 
                                 }
-
                             %>
 
                         </tbody>
@@ -78,8 +76,10 @@
                 </div>
 
                             
+                            
                 <div class="form-style-5">
                     <a href="TablaController?action=incertarAc"><input type="submit" value="Add Tabla"/></a>
+                    Reporte de Colmenas
                     <table border=1>
                         <thead>
                             <tr>
@@ -93,20 +93,19 @@
                         </thead>
                         <tbody>
                             <%
-                                List<ColmenasJc> newCliente = (List<ColmenasJc>) request.getAttribute("TablaListaJsp2");
-                                if (newCliente != null) {
-                                    for (ColmenasJc cliente : newCliente) {
+                                List<ColmenasJc> newClientes = (List<ColmenasJc>) request.getAttribute("TablaListaJsp2");
+                                if (newClientes != null) {
+                                    for (ColmenasJc clientes : newClientes) {
                             %>
                             <tr>
-                                <td><%=cliente.getID_Colmena()%></td>
-                                <td><%=cliente.getCoordenadas()%></td>
-                                <td><%=cliente.getFecha_intalcion()%></td>
-                                <td><%=cliente.getID_FKFabrica()%></td>
-                                <td><%=cliente.getID_FkColmena()%></td>
-                                <td><a href="TablaController?action=edit&TablaJspAc=<%=cliente.getID_Colmena()%>">Aatualizar</a></td>
-                                <td><a href="TablaController?action=delete&TablaJspAc=<%=cliente.getID_Colmena()%>">Eliminar</a></td>
+                                <td><%=clientes.getID_Colmena()%></td>
+                                <td><%=clientes.getCoordenadas()%></td>
+                                <td><%=clientes.getFecha_intalcion()%></td>
+                                <td><%=clientes.getID_FKFabrica()%></td>
+                                <td><%=clientes.getID_FkColmena()%></td>
+                                <td><a href="TablaController?action=edit&TablaJspAc=<%=clientes.getID_Colmena()%>">Aatualizar</a></td>
+                                <td><a href="TablaController?action=delete&TablaJspAc=<%=clientes.getID_Colmena()%>">Eliminar</a></td>
                             </tr>
-
                             <%
                                     }
 
@@ -117,9 +116,10 @@
                         </tbody>
                     </table>
                 </div>
+                            
+                            
 
             </div>
         </div>
-
     </body>
 </html>
