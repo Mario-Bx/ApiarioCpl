@@ -40,8 +40,11 @@
                     <table border=1>
                         <thead>
                             <tr>
-                                <th>Id Colmena</th>
-                                <th>Miel Total</th>
+                                <th>Tabla Id</th>
+                                <th>Fecha</th>
+                                <th>Nombre</th>
+                                <th>Colmena Madre</th>
+                                <th>Kilos de Miel</th>
                                 <th colspan=2>Action</th>
                             </tr>
                         </thead>
@@ -52,6 +55,9 @@
                                     for (KilosMielJC cliente : newCliente) {
                             %>
                             <tr>
+                                <td><%=cliente.getID_Produccion()%></td>
+                                <td><%=cliente.getFecha()%></td>
+                                <td><%=cliente.getNombre()%></td>
                                 <td><%=cliente.getID_FkColmena()%></td>
                                 <td><%=cliente.getKilos_Miel()%></td>
                                 <td><a href="TablaController?action=edit&TablaJspAc=<%=cliente.getID_Produccion()%>">Aatualizar</a></td>

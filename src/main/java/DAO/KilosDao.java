@@ -80,12 +80,9 @@ public class KilosDao {
             Statement statement = connection.createStatement();
 
 //            ResultSet rs = statement.executeQuery("SELECT ID_Produccion, Fecha, Nombre, ID_FkColmena, sum(Kilos_Miel) FROM prodcionmbd WHERE prodcionmbd.ID_Produccion != 1234 and Kilos_Miel>2 GROUP BY prodcionmbd.ID_FkColmena");
-            ResultSet rs = statement.executeQuery("SELECT ID_Produccion, Fecha, Nombre, ID_FkColmena, sum(Kilos_Miel) FROM prodcionmbd WHERE prodcionmbd.ID_Produccion != 1234 and Kilos_Miel>2 ");
+            ResultSet rs = statement.executeQuery("SELECT ID_FkColmena, sum(Kilos_Miel) FROM prodcionmbd WHERE ID_Produccion != 1234 and Kilos_Miel>2 GROUP BY ID_FkColmena");
             while (rs.next()) {
                 KilosMielJC tablaLI = new KilosMielJC();
-                tablaLI.setID_Produccion(rs.getInt("ID_Produccion"));
-                tablaLI.setFecha(rs.getString("Fecha"));
-                tablaLI.setNombre(rs.getString("Nombre"));
                 tablaLI.setID_FkColmena(rs.getInt("ID_FkColmena"));
                 tablaLI.setKilos_Miel(rs.getInt("Kilos_Miel"));
                 tablaLista.add(tablaLI);
