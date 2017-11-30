@@ -78,28 +78,28 @@
                     <table border=1>
                         <thead>
                             <tr>
-                                <th>ID Colmena</th>
-                                <th>Coordenadas</th>
-                                <th>Intalacion</th>
-                                <th>Fabrica</th>
+                                <th>Tabla Id</th>
+                                <th>Fecha</th>
+                                <th>Nombre</th>
                                 <th>Colmena Madre</th>
+                                <th>Kilos de Miel</th>
                                 <th colspan=2>Action</th>
                             </tr>
                         </thead>
                         <tbody>
                             <%
-                                List<ColmenasJc> newCliente = (List<ColmenasJc>) request.getAttribute("TablaListaJsp2");
+                                List<KilosMielJC> newCliente = (List<KilosMielJC>) request.getAttribute("TablaListaJsp1");
                                 if (newCliente != null) {
-                                    for (ColmenasJc cliente : newCliente) {
+                                    for (KilosMielJC cliente : newCliente) {
                             %>
                             <tr>
-                                <td><%=cliente.getID_Colmena()%></td>
-                                <td><%=cliente.getCoordenadas()%></td>
-                                <td><%=cliente.getFecha_intalcion()%></td>
-                                <td><%=cliente.getID_FKFabrica()%></td>
+                                <td><%=cliente.getID_Produccion()%></td>
+                                <td><%=cliente.getFecha()%></td>
+                                <td><%=cliente.getNombre()%></td>
                                 <td><%=cliente.getID_FkColmena()%></td>
-                                <td><a href="TablaController?action=edit&TablaJspAc=<%=cliente.getID_Colmena()%>">Aatualizar</a></td>
-                                <td><a href="TablaController?action=delete&TablaJspAc=<%=cliente.getID_Colmena()%>">Eliminar</a></td>
+                                <td><%=cliente.getKilos_Miel()%></td>
+                                <td><a href="TablaController?action=edit&TablaJspAc=<%=cliente.getID_Produccion()%>">Aatualizar</a></td>
+                                <td><a href="TablaController?action=delete&TablaJspAc=<%=cliente.getID_Produccion()%>">Eliminar</a></td>
                             </tr>
 
                             <%
@@ -111,6 +111,7 @@
 
                         </tbody>
                     </table>
+                   
 
                 </div>
 
