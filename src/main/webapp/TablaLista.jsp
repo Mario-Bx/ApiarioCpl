@@ -41,16 +41,18 @@
                         <thead>
                             <tr>
                                 <th>Tabla Id</th>
+                                <th>Fecha</th>
                                 <th>Nombre</th>
-                                <th>ID del Squema</th>
+                                <th>Colmena Madre</th>
+                                <th>Kilos de Miel</th>
                                 <th colspan=2>Action</th>
                             </tr>
                         </thead>
                         <tbody>
                             <%
-                                List<TablaJc> newCliente = (List<TablaJc>) request.getAttribute("TablaListaJsp");
+                                List<KilosMielJC> newCliente = (List<KilosMielJC>) request.getAttribute("TablaListaJsp");
                                 if (newCliente != null) {
-                                    for (TablaJc cliente : newCliente) {
+                                    for (KilosMielJC cliente : newCliente) {
                             %>
                             <tr>
                                 <td><%=cliente.getId_Tabla()%></td>
