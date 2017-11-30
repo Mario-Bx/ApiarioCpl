@@ -55,9 +55,11 @@
                                     for (KilosMielJC cliente : newCliente) {
                             %>
                             <tr>
-                                <td><%=cliente.getI%></td>
+                                <td><%=cliente.getID_Produccion()%></td>
+                                <td><%=cliente.getFecha()%></td>
                                 <td><%=cliente.getNombre()%></td>
-                                <td><%=cliente.getIdFK_Squema()%></td>
+                                <td><%=cliente.getID_FkColmena()%></td>
+                                <td><%=cliente.getKilos_Miel()%></td>
                                 <td><a href="TablaController?action=edit&TablaJspAc=<%=cliente.getId_Tabla()%>">Aatualizar</a></td>
                                 <td><a href="TablaController?action=delete&TablaJspAc=<%=cliente.getId_Tabla()%>">Eliminar</a></td>
                             </tr>
