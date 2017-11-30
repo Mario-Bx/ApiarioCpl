@@ -51,9 +51,9 @@ public class TablaController extends HttpServlet {
             ///primero va la tabla de sql
 //            request.setAttribute("TablaJsp", tabla);
         } else if (action.equalsIgnoreCase("ListarTablasJspAC")) {
-            forward = LIST_USER;
-            request.setAttribute("TablaListaJsp", dao.getAllColmenas());
-            request.setAttribute("TablaListaJsp", dao.getAllTablas());
+            forward = LIST_USER;            
+            request.setAttribute("TablaListaJsp1", dao.getAllTablas());
+            request.setAttribute("TablaListaJsp2", dao.getAllColmenas());
         } else {
             forward = INSERT_OR_EDIT;
         }
