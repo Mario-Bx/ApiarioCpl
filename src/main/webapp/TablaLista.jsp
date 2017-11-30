@@ -75,42 +75,7 @@
                         </tbody>
                     </table>
                     
-                    <table border=1>
-                        <thead>
-                            <tr>
-                                <th>Tabla Id</th>
-                                <th>Fecha</th>
-                                <th>Nombre</th>
-                                <th>Colmena Madre</th>
-                                <th>Kilos de Miel</th>
-                                <th colspan=2>Action</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <%
-                                List<KilosMielJC> newCliente = (List<KilosMielJC>) request.getAttribute("TablaListaJsp1");
-                                if (newCliente != null) {
-                                    for (KilosMielJC cliente : newCliente) {
-                            %>
-                            <tr>
-                                <td><%=cliente.getID_Produccion()%></td>
-                                <td><%=cliente.getFecha()%></td>
-                                <td><%=cliente.getNombre()%></td>
-                                <td><%=cliente.getID_FkColmena()%></td>
-                                <td><%=cliente.getKilos_Miel()%></td>
-                                <td><a href="TablaController?action=edit&TablaJspAc=<%=cliente.getID_Produccion()%>">Aatualizar</a></td>
-                                <td><a href="TablaController?action=delete&TablaJspAc=<%=cliente.getID_Produccion()%>">Eliminar</a></td>
-                            </tr>
-
-                            <%
-                                    }
-
-                                }
-
-                            %>
-
-                        </tbody>
-                    </table>
+                    
                    
 
                 </div>
