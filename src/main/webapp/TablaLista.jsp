@@ -51,7 +51,7 @@
                         </thead>
                         <tbody>
                             <%
-                                List<KilosMielJC> newCliente = (List<KilosMielJC>) request.getAttribute("TablaListaJsp");
+                                List<KilosMielJC> newCliente = (List<KilosMielJC>) request.getAttribute("TablaListaJsp1");
                                 if (newCliente != null) {
                                     for (KilosMielJC cliente : newCliente) {
                             %>
