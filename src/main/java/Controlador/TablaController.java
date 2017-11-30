@@ -52,6 +52,7 @@ public class TablaController extends HttpServlet {
 //            request.setAttribute("TablaJsp", tabla);
         } else if (action.equalsIgnoreCase("ListarTablasJspAC")) {
             forward = LIST_USER;
+            request.setAttribute("TablaListaJsp", dao.getAllColmenas());
             request.setAttribute("TablaListaJsp", dao.getAllTablas());
         } else {
             forward = INSERT_OR_EDIT;

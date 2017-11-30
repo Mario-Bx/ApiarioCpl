@@ -6,6 +6,7 @@
 package DAO;
 
 
+import Dato.ColmenasJc;
 import Dato.KilosMielJC;
 import Servicios.Conexion;
 import java.net.URISyntaxException;
@@ -83,8 +84,35 @@ public class KilosDao {
             ResultSet rs = statement.executeQuery("SELECT ID_FkColmena, sum(Kilos_Miel) FROM prodcionmbd WHERE ID_Produccion != 1234 and Kilos_Miel>2 GROUP BY ID_FkColmena");
             while (rs.next()) {
                 KilosMielJC tablaLI = new KilosMielJC();
+                tablaLI.setID_Produccion(rs.getInt("ID_Produccion"));
+                tablaLI.setFecha(rs.getString("Fecha"));
+                tablaLI.setNombre(rs.getString("Nombre"));
                 tablaLI.setID_FkColmena(rs.getInt("ID_FkColmena"));
                 tablaLI.setKilos_Miel(rs.getInt("Kilos_Miel"));
+                tablaLista.add(tablaLI);
+            }
+            System.out.println("Se Termino de  Listar");
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return tablaLista;
+    }
+    
+    public List<ColmenasJc> getAllColmenas() {
+        List<ColmenasJc> tablaLista = new ArrayList<ColmenasJc>();
+        try {
+            System.out.println("Emplezando a Listar");
+            Statement statement = connection.createStatement();
+
+            ResultSet rs = statement.executeQuery("SELECT * FROM colmenabd");
+            while (rs.next()) {
+                ColmenasJc tablaLI = new ColmenasJc();
+                tablaLI.setID_Colmena(rs.getInt("ID_Colmena"));
+                tablaLI.setCoordenadas(rs.getString("Coordenadas"));
+                tablaLI.setFecha_intalcion(rs.getString("Fecha_intalcion"));
+                tablaLI.setID_FKFabrica(rs.getInt("ID_FKFabrica"));
+                tablaLI.setID_FkColmena(rs.getInt("ID_FkColmena"));
                 tablaLista.add(tablaLI);
             }
             System.out.println("Se Termino de  Listar");
